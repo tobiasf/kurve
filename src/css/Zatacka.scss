@@ -1,5 +1,5 @@
-$nativeWidth: 640px;
-$nativeHeight: 480px;
+$nativeWidth: 1920px;
+$nativeHeight: 1080px;
 
 * {
     margin: 0;
@@ -55,7 +55,7 @@ a:hover, a:focus, a:active {
     user-select: none;
 }
 
-$canvasWidth: 559px;
+$canvasWidth: 1920px;
 $borderWidth: 4px;
 $scoreboardWidth: 77px;
 $leftMargin: (
@@ -65,7 +65,7 @@ $leftMargin: (
 
 #border {
     width: $canvasWidth;
-    height: 480px;
+    height: 1080px;
     background-color: black;
     display: flex; /* to prevent weird extra space at the bottom */
     position: relative; /* to allow absolute positioning of descendants*/
@@ -178,6 +178,8 @@ button {
 #splashScreen {
     width: $nativeWidth;
     height: $nativeHeight;
+    background: no-repeat;
+    background-position: center;
     background-image: url("../resources/splash.png");
 }
 
@@ -187,6 +189,13 @@ button {
     padding-top: 50px;
     padding-left: 80px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    > div {
+        text-align: center;
+    }
 
     .playerEntry {
         width: 100%;
@@ -200,7 +209,7 @@ button {
         }
 
         .controls {
-            width: 160px;
+            // width: 160px;
         }
     }
 }
