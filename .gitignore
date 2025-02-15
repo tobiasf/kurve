@@ -6,3 +6,7 @@ node_modules
 build
 *.css
 elm-stuff
+
+*/.idea
+
+brainwave/venv
