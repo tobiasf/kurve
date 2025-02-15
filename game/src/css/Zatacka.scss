@@ -144,9 +144,19 @@ $minWidthForCenteredCanvas: (
     mask-size: auto 100%;
 }
 
+@keyframes wobble {
+    33% {
+      transform: rotate(5deg);
+    }
+    66% {
+      transform: rotate(-5deg);
+    }
+  }
+
 .icon {
-    width: 30px;
+    width: 60px;
   height: auto;
+  animation: wobble 1s ease-in-out infinite;
 }
 
 .dialogOverlay {

@@ -30,7 +30,7 @@ playerEntry ( player, status ) =
         [ Html.div
             [ Attr.class "controls"
             ]
-            (Text.string (Text.Size 2) player.color <| "(" ++ left ++ " " ++ right ++ ")")
+            (Text.string (Text.Size 4) player.color <| "(" ++ left ++ " " ++ right ++ ")")
         , Html.div
             [ Attr.style "visibility"
                 (case status of
