@@ -383,14 +383,14 @@ view model =
                         ]
                         [ canvas
                             [ Attr.id "canvas_main"
-                            , Attr.width 1600
-                            , Attr.height 900
+                            , Attr.width 1280
+                            , Attr.height 720
                             ]
                             []
                         , canvas
                             [ Attr.id "canvas_overlay"
-                            , Attr.width 1600
-                            , Attr.height 900
+                            , Attr.width 1280
+                            , Attr.height 720
                             , Attr.class "overlay"
                             ]
                             []

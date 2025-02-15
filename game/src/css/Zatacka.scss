@@ -1,5 +1,5 @@
-$nativeWidth: 1600px;
-$nativeHeight: 900px;
+$nativeWidth: 1280px;
+$nativeHeight: 720px;
 
 @font-face {
     font-family: "CenturyExpandedItalic";
@@ -69,7 +69,7 @@ a:hover, a:focus, a:active {
     user-select: none;
 }
 
-$canvasWidth: 1600px;
+$canvasWidth: 1280px;
 $borderWidth: 4px;
 $scoreboardWidth: 77px;
 $leftMargin: (
@@ -79,7 +79,7 @@ $leftMargin: (
 
 #border {
     width: $canvasWidth;
-    height: 900px;
+    height: 720px;
     background-color: black;
     display: flex; /* to prevent weird extra space at the bottom */
     position: relative; /* to allow absolute positioning of descendants*/
@@ -154,7 +154,7 @@ $minWidthForCenteredCanvas: (
   }
 
 .icon {
-    width: 60px;
+    width: 45px;
   height: auto;
   animation: wobble 1s ease-in-out infinite;
 }
@@ -229,6 +229,7 @@ button {
     .playerEntry {
         width: 100%;
         height: 50px;
+        margin-bottom: 2rem;
 
         > div {
             height: 100%;

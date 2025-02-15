@@ -52,17 +52,22 @@
         jonas.src = './resources/jonas.png'
         const nikhil = new Image();
         nikhil.src = './resources/nikhil.png'
+        const adne = new Image();
+        adne.src = './resources/adne.png'
 
         function getFace(color) {
+            console.log(color)
             switch(color){
                 case 'rgba(100%,15.69%,0%,1)': //red
                     return stian;
                 case 'rgba(0%,79.61%,0%,1)': //grønn
-                    return andreas;
+                    return adne;
                 case 'rgba(76.47%,76.47%,0%,1)': //gul
                     return jonas;
                 case 'rgba(0%,63.53%,79.61%,1)': //blå
                     return nikhil;
+                case 'rgba(87.45%,31.76%,71.37%,1)': //lilla
+                    return andreas;
             }
         }
 

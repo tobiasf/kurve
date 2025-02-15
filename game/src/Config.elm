@@ -26,8 +26,8 @@ default =
         , holes =
             { minInterval = Distance 90
             , maxInterval = Distance 300
-            , minSize = Distance 20
-            , maxSize = Distance 45
+            , minSize = Distance 30
+            , maxSize = Distance 65
             }
         }
     , spawn =
@@ -39,8 +39,8 @@ default =
         , angleInterval = ( -pi / 2, pi / 2 )
         }
     , world =
-        { width = 1600
-        , height = 900
+        { width = 1280
+        , height = 720
         }
     , game =
         { isGameOver = defaultGameOverCondition
