@@ -21,7 +21,7 @@ default : Config
 default =
     { kurves =
         { tickrate = Tickrate 60
-        , turningRadius = Radius 28.5
+        , turningRadius = Radius 40
         , speed = Speed 60
         , holes =
             { minInterval = Distance 90
