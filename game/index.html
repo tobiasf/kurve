@@ -3,7 +3,6 @@
 <html lang="en">
 
 <head>
-
     <title>Achtung, die Kurve!</title>
 
     <meta charset="UTF-8" />
@@ -45,11 +44,32 @@
     <!-- <script src="./js/start.js"></script> -->
     <script>
         const app = Elm.Main.init({ node: document.getElementById("elm-node") });
+        const stian = new Image();
+        stian.src = './resources/stian.png'
+        const andreas = new Image();
+        andreas.src = './resources/andreas.png'
+        const jonas = new Image();
+        jonas.src = './resources/jonas.png'
+        const nikhil = new Image();
+        nikhil.src = './resources/nikhil.png'
 
-        function drawSquare(canvas, { position: { leftEdge, topEdge }, thickness, color }) {
+        function getFace(color) {
+            switch(color){
+                case 'rgba(100%,15.69%,0%,1)': //red
+                    return stian;
+                case 'rgba(0%,79.61%,0%,1)': //grønn
+                    return andreas;
+                case 'rgba(76.47%,76.47%,0%,1)': //gul
+                    return jonas;
+                case 'rgba(0%,63.53%,79.61%,1)': //blå
+                    return nikhil;
+            }
+        }
+
+        function drawSquare(canvas, { position: { leftEdge, topEdge }, thickness, color }, face = false) {
             const context = canvas.getContext("2d");
             context.fillStyle = color;
-            context.fillRect(leftEdge, topEdge, thickness, thickness);
+            face ? context.drawImage(getFace(color), leftEdge - 15, topEdge - 15, 30, 30) : context.fillRect(leftEdge, topEdge, thickness, thickness);
         }
 
         function clearRectangleIfCanvasExists(canvas, { x, y, width, height }) {
@@ -73,7 +93,7 @@
             const canvas_overlay = document.getElementById("canvas_overlay");
             clearRectangleIfCanvasExists(canvas_overlay, { x: 0, y: 0, width: canvas_overlay?.width, height: canvas_overlay?.height }); // Very large numbers don't work; see the commit that added this comment.
             for (const square of squares) {
-                drawSquare(canvas_overlay, square);
+                drawSquare(canvas_overlay, square, true);
             }
         });
 

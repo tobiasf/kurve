@@ -144,6 +144,11 @@ $minWidthForCenteredCanvas: (
     mask-size: auto 100%;
 }
 
+.icon {
+    width: 30px;
+  height: auto;
+}
+
 .dialogOverlay {
     display: flex;
     align-items: center;

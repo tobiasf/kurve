@@ -5,6 +5,7 @@ import GUI.Controls
 import GUI.Text as Text
 import Html exposing (Html, div)
 import Html.Attributes as Attr
+import Color exposing (Color)
 import Players exposing (AllPlayers)
 import Types.Player exposing (Player)
 import Types.PlayerStatus exposing (PlayerStatus(..))
@@ -41,4 +42,13 @@ playerEntry ( player, status ) =
                 )
             ]
             (Text.string (Text.Size 2) player.color "READY")
+            , Html.img
+            [
+                if Color.toCssString player.color == "rgba(100%,15.69%,0%,1)" then Attr.src "./resources/stian.png" 
+                    else if Color.toCssString player.color == "rgba(0%,79.61%,0%,1)" then Attr.src "./resources/andreas.png"
+                    else if Color.toCssString player.color == "rgba(76.47%,76.47%,0%,1)" then Attr.src "./resources/jonas.png"
+                     else Attr.src "./resources/nikhil.png" ,
+                Attr.class "icon"
+            ]
+            []
         ]
