@@ -133,7 +133,7 @@ players =
         pink : Player
         pink =
             { color = rgb 223 81 182
-            , controls = ( [ Key "NumpadDivide", Key "End", Key "PageDown" ], [ Key "NumpadMultiply", Key "PageUp" ] )
+            , controls = ( [ Key "Digit8" ], [ Key "Digit9" ] )
             }
 
         blue : Player
