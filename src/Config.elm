@@ -39,8 +39,8 @@ default =
         , angleInterval = ( -pi / 2, pi / 2 )
         }
     , world =
-        { width = 1920
-        , height = 1080
+        { width = 1600
+        , height = 900
         }
     , game =
         { isGameOver = defaultGameOverCondition

@@ -1,12 +1,17 @@
-$nativeWidth: 1920px;
-$nativeHeight: 1080px;
+$nativeWidth: 1600px;
+$nativeHeight: 900px;
 
+@font-face {
+    font-family: "CenturyExpandedItalic";
+    src: url("../../resources/fonts/CenturyExpandedItalic.otf") format("opentype")
+}
 * {
     margin: 0;
     padding: 0;
-    font-family: "Consolas", monospace;
+    font-family: "CenturyExpandedItalic", "Consolas", monospace;
     image-rendering: pixelated;
 }
+
 
 html, body {
     width: 100%;
@@ -34,8 +39,17 @@ body {
     }
 }
 
-h1 {
-    display: none;
+#newSplash {
+    text-align: center;
+    font-size: 48px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.display__none {
+    display: none !important;
 }
 
 a:link, a:visited {
@@ -55,7 +69,7 @@ a:hover, a:focus, a:active {
     user-select: none;
 }
 
-$canvasWidth: 1920px;
+$canvasWidth: 1600px;
 $borderWidth: 4px;
 $scoreboardWidth: 77px;
 $leftMargin: (
@@ -65,7 +79,7 @@ $leftMargin: (
 
 #border {
     width: $canvasWidth;
-    height: 1080px;
+    height: 900px;
     background-color: black;
     display: flex; /* to prevent weird extra space at the bottom */
     position: relative; /* to allow absolute positioning of descendants*/
@@ -180,7 +194,7 @@ button {
     height: $nativeHeight;
     background: no-repeat;
     background-position: center;
-    background-image: url("../resources/splash.png");
+    // background-image: url("../resources/splash.png");
 }
 
 #lobby {
