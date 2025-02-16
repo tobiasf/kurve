@@ -1,15 +1,66 @@
+import subprocess
 import time
 from time import sleep
 
 import numpy as np
+import pyautogui
 import serial
-
-import subprocess
 
 import mindwave
 
 fs = 100
 T = 1 / fs
+
+isLeft = False
+isDown = False
+
+
+def start_pressing_left():
+    global isLeft, isDown
+    if isLeft:
+        return
+
+    isLeft = True
+    isDown = False
+    pyautogui.keyUp("down")
+    pyautogui.keyDown("left")
+
+
+def stop_pressing_left():
+    global isLeft
+    if not isLeft:
+        return
+
+    isLeft = False
+    pyautogui.keyUp("left")
+
+
+def all_keys_up():
+    global isLeft, isDown
+    pyautogui.keyUp("left")
+    pyautogui.keyUp("down")
+    isLeft = False
+    isDown = False
+
+
+def start_pressing_down():
+    global isDown, isLeft
+    if isDown:
+        return
+
+    isLeft = False
+    isDown = True
+    pyautogui.keyUp("left")
+    pyautogui.keyDown("down")
+
+
+def stop_pressing_down():
+    global isDown
+    if not isDown:
+        return
+
+    isDown = True
+    pyautogui.keyUp("down")
 
 
 def connect_to_mindwave():
@@ -27,6 +78,8 @@ def connect_to_mindwave():
 
 
 def start_loop(headset):
+    pyautogui.keyDown("left")
+
     print('Starting loop...')
     now = time.time()
     future = now + 60 * 10
@@ -36,44 +89,52 @@ def start_loop(headset):
     while time.time() < future:
         time.sleep(T)  # T is your sleep duration in seconds
 
-        attention = headset.attention
-        # measure = 100 - attention
         waves = dict(headset.waves)
-        #                         for i in ['delta', 'theta', 'low-alpha', 'high-alpha', 'low-beta', 'high-beta', 'low-gamma', 'mid-gamma']:
-        # Potentials
-        # theta: <= 10k under rest, skyter opp til 50k+ ved bevegelser i øyner etc
-        # low-beta: <= 20k under rest, skyter opp til 50k+ ved bevegelser i øyner etc
-        wave_name = 'low-beta'
+
+        wave_name = 'delta'
         if wave_name not in waves:
             continue
 
-        measure = waves[wave_name]
+        measure = int(waves[wave_name])
 
         if measure == prev_measure:
             continue
 
-        print("%s" % measure)
         # print ("Raw value: %s, Attention: %s, Meditation: %s" % (headset.raw_value, headset.attention, headset.meditation))
 
         prev_measure = measure
+
+        upper_threshold = 350_000
         data.append(measure)
+        median = np.median(data[-3:])
 
-        latest_data = np.array(data[-3:])
-        diffs = np.diff(latest_data)
-        avg_diff = np.mean(diffs)
-
-        print("Average difference:", avg_diff)
-        if avg_diff < 0:
-            print("Overall trend: Declining")
-        elif avg_diff == 0:
-            print("Overall trend: Flat")
+        print("%s - Med: %s" % (measure, median))
+        if measure > upper_threshold:
+            start_pressing_down()
+            print("Right")
         else:
-            print("Overall trend: Increasing")
+            start_pressing_left()
+            print("Left")
+
+        #
+        # latest_data = np.array(data[-2:])
+        # diffs = np.diff(latest_data)
+        # avg_diff = np.mean(diffs)
+        #
+        # print("Average difference:", avg_diff)
+        # if avg_diff < 0:
+        #     stop_pressing_down()
+        #     print("Declining / Left")
+        # elif avg_diff == 0:
+        #     print("Overall trend: Flat")
+        # else:
+        #     print("Increasing / Right")
+        #     start_pressing_down()
 
 
 def __main__():
-    trigger = input("Restart bluetooth and start MindWave? (y/n): ")
-    if trigger.lower() != 'y':
+    trigger = input("Restart bluetooth and start MindWave? (n?): ")
+    if trigger.lower() == 'n':
         print("Exiting...")
         exit(0)
 
