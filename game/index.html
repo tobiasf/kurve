@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Achtung, die Kurve!</title>
+    <title>Achtung, die Mindwave!</title>
 
     <meta charset="UTF-8" />
     <meta name="author" content="Simon Alling" />
@@ -11,7 +11,7 @@
     <meta name="keywords" content="Achtung, Kurve, Zatacka, KONEC, HRY, HTML, JavaScript, DOS" />
 
     <meta property="og:url" content="http://kurve.se" />
-    <meta property="og:title" content="Achtung, die Kurve!" />
+    <meta property="og:title" content="Achtung, die Mindwave!" />
     <meta property="og:description" content="A clone of the classic DOS game from 1995 that runs in the browser." />
     <meta property="og:image" content="http://kurve.se/resources/kurve-share.png" />
 
@@ -54,6 +54,8 @@
         nikhil.src = './resources/nikhil.png'
         const adne = new Image();
         adne.src = './resources/adne.png'
+        const ingvild = new Image();
+        ingvild.src = './resources/ingvild.png'
 
         function getFace(color) {
             console.log(color)
@@ -68,6 +70,8 @@
                     return nikhil;
                 case 'rgba(87.45%,31.76%,71.37%,1)': //lilla
                     return andreas;
+                case 'rgba(100%,47.45%,0%,1)': //oransje
+                    return ingvild;
             }
         }
 

@@ -48,6 +48,7 @@ playerEntry ( player, status ) =
                     else if Color.toCssString player.color == "rgba(0%,79.61%,0%,1)" then Attr.src "./resources/adne.png"
                     else if Color.toCssString player.color == "rgba(76.47%,76.47%,0%,1)" then Attr.src "./resources/jonas.png"
                     else if Color.toCssString player.color == "rgba(87.45%,31.76%,71.37%,1)" then Attr.src "./resources/andreas.png"
+                    else if Color.toCssString player.color == "rgba(100%,47.45%,0%,1)" then Attr.src "./resources/ingvild.png"
                      else Attr.src "./resources/nikhil.png" ,
                 Attr.class "icon"
             ]
